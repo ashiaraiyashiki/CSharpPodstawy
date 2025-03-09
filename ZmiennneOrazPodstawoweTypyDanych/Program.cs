@@ -9,11 +9,13 @@
 // Np. string jest aliasem do klasy String, int jest aliasem do klasy Int32 etc.
 
 {
+    // Typy proste (value types)
     int intVar = 10;
     double doubleVar = 10.5;
     float floatVar = 10.5f;
     bool boolVar = true;
     char charVar = 'a';
+    // String jako przykład typu referencyjnego
     string stringVar = "Hello, World!";
 }
 
@@ -31,14 +33,23 @@
 // Wartość null
 {
     // Aby móc przypisać do zmiennej wartość null, taka zmienna musi zawczasu zostać oznaczona jako zmienna nullowalna.
-    // Domyślnie żaden obiekt oparty o typ prosty nie może być przez nas w c# wynullowany.
+    // Domyślnie żaden obiekt oparty o typ prosty (value type) nie może być przez nas w c# wynullowany.
     // Operatorem nullowalności w c# jest znak zapytania (?)
     int? nullableIntVar = 10;
     nullableIntVar = null;
     int notNullableIntVar = 10;
     // notNullableIntVar = null; // błąd
 
-    // W przypadku typów złożonych, jeżeli nie dodamy operatora nullowalności do typu, a mimo to przypiszemy do zmiennej nulla,
-    // powinniśmy otrzymać warning w edytorze oraz podczas kompilacji, który będzie nas o tym ostrzegał.
+    // W przypadku typów referencyjnych, jeżeli nie dodamy operatora nullowalności do typu, a mimo to przypiszemy do zmiennej nulla,
+    // powinniśmy otrzymać warning w edytorze oraz podczas kompilacji, który będzie nas ostrzegał o wszelkich niebezpiecznych operacjach.
     List<int> list = null;
+    
+    // Zanim wykonamy jakąś operację na typie nullowalnym, powinniśmy sprawdzić, czy aby przypadkiem nie zawiera on wartości null:
+    if (nullableIntVar is not null)
+    {
+        Console.WriteLine(nullableIntVar + 10);
+    }
+    
+    // Ewentualnie taką wartość w przypadku bycia nullem, możemy zfallbackować na inną wartość, używając operatora ??
+    Console.WriteLine(nullableIntVar ?? 0 + 10);
 }
