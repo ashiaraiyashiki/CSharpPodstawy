@@ -4,10 +4,13 @@
 
 
 
-// Najczęściej używane podstawowe typy danych
-// Notka: w c# typy podstawowe (pisane z małej litery) są tylko i wyłącznie aliasem do typów złożonych
-// Np. string jest aliasem do klasy String, int jest aliasem do klasy Int32 etc.
+// Notka: w c# typy dzielone są na dwie główne kategorie - typy proste (value types), które w bezpośredni sposób przechowują dane (struct) oraz
+// typy referencyjne, które przechowują referencję do jakiegoś obiektu (stworzonego na bazie klasy).
+// Nazewnictwo typów podstawowych (pierwsza mała litera) to nic innego jak tzw. cukier składniowy.
+// Przykładowo nazwa int wskazuje na struct Int32, nazwa double na struct Double, a nazwa string na klasę String.
 
+
+// Najczęściej używane podstawowe typy danych
 {
     // Typy proste (value types)
     int intVar = 10;
@@ -15,7 +18,7 @@
     float floatVar = 10.5f;
     bool boolVar = true;
     char charVar = 'a';
-    // String jako przykład typu referencyjnego
+    // String jako przykład typu referencyjnego (reference types)
     string stringVar = "Hello, World!";
 }
 
@@ -24,8 +27,9 @@
     var intVar = 10;
     var stringVar = "Hello World!";
     
-    // W c# zazwyczaj używa się go wszędzie i unika się deklarowania zmiennych z wykorzystaniem jawnego typu.
-    // Jest on przydatny w momencie wykonywania długiego ciągu instrukcji, gdzie nie wiemy dokładnie, jaki typ danych zostanie nam zwrócony.
+    // W c# w dużych aplikacjach zazwyczaj unika się deklarowania zmiennych z wykorzystaniem jawnego typu.
+    // Jest on przydatny w momencie przypisywania wartości długiego ciągu instrukcji do zmiennej, gdzie nie wiemy dokładnie,
+    // jaki typ danych zostanie nam zwrócony.
     // Np.
     var value = new List<int> {1,2,3,4,5}.Where(e => e % 2 == 0).ToList().FindIndex(e => e % 2 == 0) + 1;
 }
